@@ -1,0 +1,8 @@
+authorityKeyIdentifier = critical, keyid, issuer
+basicConstraints       = critical, CA:FALSE
+keyUsage               = critical, digitalSignature, keyEncipherment
+subjectAltName         = @alt_names
+
+[alt_names]
+DNS.1 = symdon.ga
+DNS.2 = *.symdon.ga
