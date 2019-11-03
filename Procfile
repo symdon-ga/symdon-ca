@@ -1,5 +1,5 @@
 # CA
--01-CREATE-CA-INIT: mkdir -p ca && touch .index && touch .index.attr && echo "01" > .serial && mkdir -p var
+-01-CREATE-CA-INIT: mkdir -p ca var && touch var/.index && touch var/.index.attr && echo "01" > var/.serial
 -02-CREATE-CA-KEY: openssl genrsa -out ca/key.pem 2048
 -03-CREATE-CA-CSR: openssl req -new -config ca.conf -key ca/key.pem -out ca/csr.pem
 -04-CREATE-CA-CHK: openssl req -in ca/csr.pem -noout -text 
