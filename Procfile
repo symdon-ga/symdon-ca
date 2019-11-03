@@ -4,6 +4,7 @@
 -03-CREATE-CA-CSR: openssl req -new -config ca.conf -key ca/key.pem -out ca/csr.pem
 -04-CREATE-CA-CHK: openssl req -in ca/csr.pem -noout -text 
 -05-CREATE-CA-CRT: openssl x509 -days 1 -in ca/csr.pem -req -signkey ca/key.pem -out ca/crt.pem 
+-06-INSTALL-CA: sudo security add-trusted-cert -d -r trustRoot -k /Library/Keychains/System.keychain ca/crt.pem
 
 # SERVER
 -11-CREATE-SV-INIT: mkdir -p server
@@ -13,4 +14,4 @@
 -15-CREATE-SV-CRT: openssl ca -in server/csr.pem -config server.conf -out server/crt.pem -days 1 -batch  -extfile ext.txt
 
 # APP
--RUN-SERVER: gunicorn serve:app --keyfile server/key.pem --certfile server/crt.pem --bind 0.0.0.0:443
+-20-RUN-SERVER: gunicorn serve:app --keyfile server/key.pem --certfile server/crt.pem --bind 0.0.0.0:443
